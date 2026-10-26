@@ -406,10 +406,6 @@ La salida es un portafolio de parcelas con especies representadas, corredores y 
 9. ¿Qué incertidumbre podría invalidar el plan?
 10. ¿Con qué datos y ejemplos pequeños se verificará el modelo?
 
-## Actividad de cierre
-
-Elegir una aplicación del documento y elaborar una instancia con cinco a diez decisiones. Entregar los datos, las variables, las restricciones y el objetivo. Resolver a mano una alternativa factible, explicar por qué una alternativa tentadora falla y añadir una condición realista que obligue a modificar el modelo. Finalmente, proponer un método de resolución y justificar qué calidad de resultado puede prometerse.
-
 ## Referencias específicas por aplicación
 
 Los identificadores [R1]–[R11] aparecen en el caso correspondiente. Se indica qué parte respaldan para distinguir los antecedentes bibliográficos de las adaptaciones de esta guía. Los enlaces DOI conducen a fichas editoriales; el texto completo de algunas publicaciones puede requerir acceso institucional. Se incluyen enlaces abiertos cuando se identificó una copia del autor o del editor.
