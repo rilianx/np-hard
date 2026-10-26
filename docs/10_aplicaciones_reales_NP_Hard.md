@@ -4,6 +4,8 @@
 
 Este documento continúa la guía de las 18 reducciones. Su objetivo es mostrar, en diez situaciones concretas, cómo identificar decisiones, expresar restricciones y combinar estructuras fundacionales. Son escenarios ilustrativos inspirados en clases de problemas reales; los datos pequeños son inventados para poder revisar las cuentas, y no describen implementaciones de organizaciones particulares.
 
+Los diez escenarios y sus ejemplos numéricos no fueron extraídos de una publicación particular: fueron elaborados para esta guía. Las referencias específicas añadidas a cada caso documentan las familias de modelos y aplicaciones relacionadas; no atribuyen a sus autores estas cifras, estas ecuaciones concretas ni la mezcla exacta propuesta. Las adaptaciones y simplificaciones de los modelos son elaboración didáctica.
+
 Cada aplicación incluye un modelo básico, un ejemplo y las condiciones que exigen ampliarlo. Una formulación matemática es una representación de la realidad: su solución puede ser óptima para el modelo y, aun así, resultar inadecuada si faltan restricciones relevantes.
 
 ## Antes de empezar: cuatro reglas
@@ -47,7 +49,7 @@ Una distribuidora debe abastecer clínicas desde un depósito. Cada entrega tien
 
 Sean C las clínicas y K los vehículos. Se conocen demandas qᵢ, capacidades Qₖ, tiempos de viaje τᵢⱼ, costos cᵢⱼ, tiempos de servicio sᵢ y ventanas [aᵢ,bᵢ]. El depósito es el nodo 0. Los tiempos deben obtenerse de la red vial, no necesariamente de distancias en línea recta.
 
-Con un vehículo, todas las visitas obligatorias y sin horarios ni capacidad, aparece TSP. Con varios vehículos y capacidad aparece el problema de rutas de vehículos, VRP. Si hay entregas opcionales con beneficio y límite de recursos, surge una selección parecida a mochila, pero su costo depende de la ruta conjunta: no basta sumar costos de viaje individuales.
+Con un vehículo, todas las visitas obligatorias y sin horarios ni capacidad, aparece TSP. Con varios vehículos y capacidad aparece el problema de rutas de vehículos, VRP. Si hay entregas opcionales con beneficio y límite de recursos, surge una selección parecida a mochila, pero su costo depende de la ruta conjunta: no basta sumar costos de viaje individuales. Fuentes del modelo: [R1], capítulos 1, 5 y 10: ruteo, ventanas de tiempo y selección de visitas con beneficio.
 
 ### Variables, restricciones y objetivo
 
@@ -83,7 +85,7 @@ Un hospital debe cubrir turnos de una semana con diferentes competencias. Cada t
 
 Sean E los trabajadores y R los requisitos de cobertura: cada requisito identifica día, turno y competencia. Se conoce una demanda dᵣ para cada requisito. Para cada trabajador e se genera un conjunto Pₑ de patrones legales; cada patrón ya respeta sus descansos y disponibilidad.
 
-Un patrón cubre varios requisitos. Elegir patrones recuerda a Set Cover, pero cuando hacen falta varias personas por puesto se trata de cobertura con multiplicidades. La condición de elegir como máximo un patrón por persona añade una estructura de asignación. Las incompatibilidades entre asignaciones pueden expresarse como conflictos, pero no todo problema de turnos se reduce a coloreo simple.
+Un patrón cubre varios requisitos. Elegir patrones recuerda a Set Cover, pero cuando hacen falta varias personas por puesto se trata de cobertura con multiplicidades. La condición de elegir como máximo un patrón por persona añade una estructura de asignación. Las incompatibilidades entre asignaciones pueden expresarse como conflictos, pero no todo problema de turnos se reduce a coloreo simple. Fuentes del modelo: [R2], revisión de planificación de personal y sus aplicaciones sanitarias; [R4], planificación temporal.
 
 ### Variables, restricciones y objetivo
 
@@ -118,7 +120,7 @@ Una plataforma recibe trabajos de procesamiento con duración estimada, consumo 
 
 Sean J los trabajos y M los servidores. Se conocen tiempos pⱼₘ, memoria rⱼ, compatibilidad y fechas límite. Si todos los trabajos son obligatorios, los servidores son idénticos y solo se reparte carga, se obtiene minimización del makespan. Si son servicios persistentes que deben caber simultáneamente en servidores de capacidad limitada, aparece empaquetamiento, Bin Packing. Si algunos trabajos pueden rechazarse por un presupuesto de horas, surge mochila.
 
-Estas son variantes relacionadas, pero no intercambiables: la memoria se ocupa durante intervalos, mientras el tiempo de procesamiento se acumula en cada máquina.
+Estas son variantes relacionadas, pero no intercambiables: la memoria se ocupa durante intervalos, mientras el tiempo de procesamiento se acumula en cada máquina. Fuentes del modelo: [R3], sistema real de gestión de clústeres; [R4], modelos de máquinas paralelas y makespan.
 
 ### Variables, restricciones y objetivo
 
@@ -153,7 +155,7 @@ Antes de publicar una versión, un equipo dispone de diez minutos para ejecutar 
 
 Sean T las pruebas y U los requisitos o escenarios. aᵢⱼ = 1 indica que la prueba i cubre el requisito j. Se conocen duraciones dᵢ, pesos de riesgo wⱼ y un presupuesto B. Cubrir todos los requisitos minimizando pruebas corresponde a Set Cover. Maximizar cobertura con un límite de cantidad corresponde a Maximum Coverage; si las duraciones son diferentes, se obtiene su variante presupuestada, relacionada con mochila.
 
-La cobertura debe definirse: líneas ejecutadas, requisitos verificados y fallas detectables son conceptos diferentes. Cubrir código no prueba que el programa sea correcto.
+La cobertura debe definirse: líneas ejecutadas, requisitos verificados y fallas detectables son conceptos diferentes. Cubrir código no prueba que el programa sea correcto. Fuente del modelo: [R5], revisión de minimización, selección y priorización de pruebas de regresión.
 
 ### Variables, restricciones y objetivo
 
@@ -185,7 +187,7 @@ Una ciudad quiere abrir hasta tres bases de respuesta para atender barrios dentr
 
 ### Datos y estructura fundacional
 
-Sean I las ubicaciones y J las zonas. Se conocen poblaciones o demanda dⱼ, costos fᵢ y tiempos τᵢⱼ. aᵢⱼ = 1 si τᵢⱼ no supera el umbral de servicio. Una ubicación cubre un conjunto de zonas. Elegir p ubicaciones para maximizar población cubierta es Maximum Coverage. Si hay capacidades y asignación de demanda, se mezcla con localización de instalaciones y asignación.
+Sean I las ubicaciones y J las zonas. Se conocen poblaciones o demanda dⱼ, costos fᵢ y tiempos τᵢⱼ. aᵢⱼ = 1 si τᵢⱼ no supera el umbral de servicio. Una ubicación cubre un conjunto de zonas. Elegir p ubicaciones para maximizar población cubierta es Maximum Coverage. Si hay capacidades y asignación de demanda, se mezcla con localización de instalaciones y asignación. Fuente del modelo: [R6], formulación clásica de localización de cobertura máxima; la extensión capacitada es didáctica.
 
 ### Variables, restricciones y objetivo
 
@@ -219,7 +221,7 @@ Un cliente configura un producto con módulos opcionales. Algunas opciones requi
 
 Cada módulo i tiene costo cᵢ, consumo rᵢ y utilidad vᵢ. Se conocen reglas de dependencias y alternativas. La parte de compatibilidad es SAT; la selección bajo recursos se parece a mochila. Ambas se integran mediante SAT con restricciones adicionales, optimización booleana o MIP.
 
-No basta filtrar incompatibilidades por pares: «si se instala A, debe incluirse B o C» es una condición lógica de más de dos elementos.
+No basta filtrar incompatibilidades por pares: «si se instala A, debe incluirse B o C» es una condición lógica de más de dos elementos. Fuente del modelo: [R7], validación de configuraciones automotrices mediante restricciones booleanas y SAT; el presupuesto es una extensión didáctica.
 
 ### Variables, restricciones y objetivo
 
@@ -254,7 +256,7 @@ Una universidad debe decidir qué cursos ofrecer y asignarles bloque horario y s
 
 ### Datos y estructura fundacional
 
-Sean C los cursos, T los bloques y R las salas. Se conocen matrícula estimada, capacidad de cada sala, disponibilidad y pares de cursos en conflicto. También se conoce qué competencias cubre cada curso. El núcleo de separación horaria es coloreo: cada curso es un vértice y cada bloque un color. Cubrir competencias con la oferta seleccionada introduce Set Cover; límites de presupuesto y docentes agregan selección y asignación.
+Sean C los cursos, T los bloques y R las salas. Se conocen matrícula estimada, capacidad de cada sala, disponibilidad y pares de cursos en conflicto. También se conoce qué competencias cubre cada curso. El núcleo de separación horaria es coloreo: cada curso es un vértice y cada bloque un color. Cubrir competencias con la oferta seleccionada introduce Set Cover; límites de presupuesto y docentes agregan selección y asignación. Fuente del modelo: [R8], revisión de horarios escolares, universitarios y de exámenes; la selección por competencias es una extensión didáctica.
 
 ### Variables, restricciones y objetivo
 
@@ -289,7 +291,7 @@ Una fábrica recibe pedidos que deben procesarse en máquinas. Cambiar de produc
 
 ### Datos y estructura fundacional
 
-Sean J los trabajos y M las máquinas. Cada trabajo tiene duración pⱼₘ, fecha de entrega dⱼ y máquinas compatibles. sᵢⱼₘ es la preparación si j sigue inmediatamente a i. Ordenar todos los trabajos en una máquina minimizando cambios se relaciona con TSP o Traveling Salesman Path; distribuirlos entre varias añade scheduling y asignación. Varias operaciones por pedido introducen precedencias, como en Job Shop.
+Sean J los trabajos y M las máquinas. Cada trabajo tiene duración pⱼₘ, fecha de entrega dⱼ y máquinas compatibles. sᵢⱼₘ es la preparación si j sigue inmediatamente a i. Ordenar todos los trabajos en una máquina minimizando cambios se relaciona con TSP o Traveling Salesman Path; distribuirlos entre varias añade scheduling y asignación. Varias operaciones por pedido introducen precedencias, como en Job Shop. Fuentes del modelo: [R9], preparaciones dependientes de la secuencia; [R4], modelos generales de scheduling.
 
 ### Variables, restricciones y objetivo
 
@@ -324,7 +326,7 @@ Una institución quiere difundir información mediante promotores. Cada uno tien
 
 ### Datos y estructura fundacional
 
-Sean V las personas o grupos y A sus relaciones dirigidas. Se conoce el costo cᵢ de contactar cada semilla y un presupuesto B. Si solo interesa la audiencia directa conocida, cada promotor cubre un conjunto: Maximum Coverage con presupuesto. Si las personas activadas retransmiten el mensaje, aparece Influence Maximization. No deben sumarse audiencias individuales porque pueden superponerse.
+Sean V las personas o grupos y A sus relaciones dirigidas. Se conoce el costo cᵢ de contactar cada semilla y un presupuesto B. Si solo interesa la audiencia directa conocida, cada promotor cubre un conjunto: Maximum Coverage con presupuesto. Si las personas activadas retransmiten el mensaje, aparece Influence Maximization. No deben sumarse audiencias individuales porque pueden superponerse. Fuente del modelo: [R10], modelos de difusión, NP-dificultad y aproximación por submodularidad.
 
 ### Variables, restricciones y objetivo
 
@@ -358,7 +360,7 @@ Una organización dispone de presupuesto para proteger parcelas. Cada parcela co
 
 Sean I las parcelas y S las especies o tipos de hábitat. a_is = 1 indica presencia relevante de s en i; cᵢ es el costo y w_s la prioridad. Las adyacencias forman un grafo espacial. Maximizar especies representadas bajo presupuesto corresponde a cobertura máxima presupuestada. Si se exige representar todas minimizando costo, aparece Set Cover ponderado. Exigir conexión añade una estructura de selección conectada, relacionada con problemas de redes como Steiner.
 
-La presencia no equivale a viabilidad: proteger una parcela con un individuo no garantiza conservar una población. El modelo básico mide representación, no supervivencia.
+La presencia no equivale a viabilidad: proteger una parcela con un individuo no garantiza conservar una población. El modelo básico mide representación, no supervivencia. Fuente del modelo: [R11], selección de reservas y atributos espaciales, incluida conectividad.
 
 ### Variables, restricciones y objetivo
 
@@ -408,14 +410,81 @@ La salida es un portafolio de parcelas con especies representadas, corredores y 
 
 Elegir una aplicación del documento y elaborar una instancia con cinco a diez decisiones. Entregar los datos, las variables, las restricciones y el objetivo. Resolver a mano una alternativa factible, explicar por qué una alternativa tentadora falla y añadir una condición realista que obligue a modificar el modelo. Finalmente, proponer un método de resolución y justificar qué calidad de resultado puede prometerse.
 
-## Referencias para profundizar
+## Referencias específicas por aplicación
 
-- Tim Roughgarden. *Algorithms Illuminated, Part 4: Algorithms for NP-Hard Problems*. Problemas fundacionales, reducciones y estrategias algorítmicas.
-- Jon Kleinberg y Éva Tardos. *Algorithm Design*. Modelado, NP-completitud y aproximación.
-- Michael R. Garey y David S. Johnson. *Computers and Intractability*. Referencia sobre problemas NP-completos y reducciones.
-- Laurence A. Wolsey. *Integer Programming*. Formulaciones y métodos de programación entera.
-- Paolo Toth y Daniele Vigo, eds. *Vehicle Routing: Problems, Methods, and Applications*, segunda edición. Ruteo y variantes operativas.
-- Michael L. Pinedo. *Scheduling: Theory, Algorithms, and Systems*. Planificación temporal y asignación de recursos.
-- David Kempe, Jon Kleinberg y Éva Tardos. “Maximizing the Spread of Influence through a Social Network” (2003). Modelos clásicos de difusión e influencia.
+Los identificadores [R1]–[R11] aparecen en el caso correspondiente. Se indica qué parte respaldan para distinguir los antecedentes bibliográficos de las adaptaciones de esta guía. Los enlaces DOI conducen a fichas editoriales; el texto completo de algunas publicaciones puede requerir acceso institucional. Se incluyen enlaces abiertos cuando se identificó una copia del autor o del editor.
 
-Las referencias orientan el estudio de las familias de problemas; no implican que los ejemplos numéricos de esta guía provengan de esas obras. Para demostrar NP-dificultad de una variante concreta es necesario verificar que el caso particular citado respete exactamente sus restricciones.
+### [R1] Rutas de vehículos — caso 1
+
+Toth, P., y Vigo, D. (eds.). (2014). *Vehicle Routing: Problems, Methods, and Applications*. 2.ª edición. SIAM. [DOI y ficha editorial](https://doi.org/10.1137/1.9781611973594).
+
+Localizadores: capítulo 1, “The Family of Vehicle Routing Problems”; capítulo 5, “The Vehicle Routing Problem with Time Windows”; capítulo 10, “Vehicle Routing Problems with Profits”. Respaldan la estructura de rutas con capacidad, horarios y visitas opcionales. El reparto de medicamentos y sus cifras son una adaptación ilustrativa; no se presentan como un estudio clínico o una implementación reportada por el libro.
+
+### [R2] Planificación de personal — caso 2
+
+Ernst, A. T., Jiang, H., Krishnamoorthy, M., y Sier, D. (2004). “Staff scheduling and rostering: A review of applications, methods and models”. *European Journal of Operational Research*, 153(1), 3–27. [DOI](https://doi.org/10.1016/S0377-2217%2803%2900095-X).
+
+Revisión de requisitos, modelos y métodos de planificación de personal, con aplicaciones en salud y otros servicios. Respalda el contexto de turnos y restricciones de dotación; la pequeña instancia de Ana, Bruno y Carla fue creada para la guía.
+
+### [R3] Gestión real de clústeres — caso 3
+
+Verma, A., Pedrosa, L., Korupolu, M. R., Oppenheimer, D., Tune, E., y Wilkes, J. (2015). “Large-scale cluster management at Google with Borg”. *Proceedings of EuroSys*, artículo 18. [DOI](https://doi.org/10.1145/2741948.2741964). [Ficha y acceso desde Google Research](https://research.google/pubs/large-scale-cluster-management-at-google-with-borg/).
+
+Documenta un sistema real con admisión de trabajos, empaquetamiento de tareas y recursos compartidos. Motiva las decisiones operativas del caso; no implica que Borg utilice exactamente el modelo simplificado de makespan presentado aquí.
+
+### [R4] Scheduling — casos 2, 3 y 8
+
+Pinedo, M. L. (2022). *Scheduling: Theory, Algorithms, and Systems*. 6.ª edición. Springer. [DOI y ficha editorial](https://doi.org/10.1007/978-3-031-05921-6).
+
+Texto de referencia sobre planificación temporal, máquinas paralelas, entornos de producción, objetivos y métodos de resolución. Respalda las estructuras de scheduling; los tiempos y ejemplos de esta guía no provienen del libro.
+
+### [R5] Pruebas de regresión — caso 4
+
+Yoo, S., y Harman, M. (2012). “Regression testing minimization, selection and prioritization: a survey”. *Software Testing, Verification and Reliability*, 22(2), 67–120. [DOI](https://doi.org/10.1002/stvr.430).
+
+Distingue minimización, selección y priorización de pruebas y revisa sus técnicas. Respalda el vínculo entre pruebas y cobertura. El presupuesto de ocho minutos y la combinación con varios ejecutores son construcciones didácticas; tampoco se equipara cobertura con corrección del software.
+
+### [R6] Localización de cobertura máxima — caso 5
+
+Church, R., y ReVelle, C. (1974). “The maximal covering location problem”. *Papers in Regional Science*, 32, 101–118. [DOI](https://doi.org/10.1111/j.1435-5597.1974.tb00902.x).
+
+Fuente fundacional para seleccionar instalaciones y maximizar población cubierta bajo un límite de instalaciones. Respalda el modelo básico; capacidad, respaldo ante fallas y equidad se discuten como ampliaciones y no se atribuyen íntegramente al artículo original.
+
+### [R7] Configuración mediante SAT — caso 6
+
+Sinz, C., Kaiser, A., y Küchlin, W. (2003). “Formal methods for the validation of automotive product configuration data”. *AI EDAM*, 17(1), 75–97. [DOI](https://doi.org/10.1017/S0890060403171065). [Manuscrito en el sitio del autor](https://www.carstensinz.de/papers/AIEDAM-2003.pdf).
+
+Presenta validación de datos de configuración automotriz mediante restricciones booleanas y un comprobador de satisfacibilidad con explicación. Respalda una aplicación industrial concreta de SAT; la optimización de utilidades bajo presupuesto en esta guía es una extensión de modelado.
+
+### [R8] Horarios académicos — caso 7
+
+Schaerf, A. (1999). “A survey of automated timetabling”. *Artificial Intelligence Review*, 13, 87–127. [DOI](https://doi.org/10.1023/A:1006576209967). [Ficha del laboratorio del autor con enlace al texto](https://iolab.uniud.it/publication/scha-99/).
+
+Revisa modelos y técnicas para horarios escolares, universitarios y de exámenes. Respalda las restricciones de calendario y los conflictos. La oferta por competencias se añadió para ilustrar la interacción entre selección y asignación de horarios.
+
+### [R9] Preparaciones y cambios entre trabajos — caso 8
+
+Allahverdi, A., Ng, C. T., Cheng, T. C. E., y Kovalyov, M. Y. (2008). “A survey of scheduling problems with setup times or costs”. *European Journal of Operational Research*, 187(3), 985–1032. [DOI](https://doi.org/10.1016/j.ejor.2006.06.060).
+
+Revisa scheduling con tiempos o costos de preparación en diversos entornos. Respalda la relevancia de los cambios entre trabajos. La equivalencia simplificada con un camino del viajante se explica en la guía bajo sus propios supuestos.
+
+### [R10] Maximización de influencia — caso 9
+
+Kempe, D., Kleinberg, J., y Tardos, É. (2015). “Maximizing the Spread of Influence through a Social Network”. *Theory of Computing*, 11(4), 105–147. [DOI](https://doi.org/10.4086/toc.2015.v011a004). [Artículo de acceso abierto](https://www.theoryofcomputing.org/articles/v011a004/).
+
+Versión ampliada de trabajos de conferencia de 2003 y 2005. Desarrolla modelos de difusión, su NP-dificultad y garantías de aproximación mediante submodularidad. Respalda las afirmaciones algorítmicas bajo esos modelos, no la predicción de comportamiento de una campaña humana particular.
+
+### [R11] Diseño espacial de reservas — caso 10
+
+Williams, J. C., ReVelle, C. S., y Levin, S. A. (2005). “Spatial attributes and reserve design models: A review”. *Environmental Modeling & Assessment*, 10, 163–181. [DOI](https://doi.org/10.1007/s10666-005-9007-5). [Copia académica del artículo](https://faculty.washington.edu/toths/Presentations/Lecture%209/Williams_ReVelle_Review_ENMO2005.pdf).
+
+Revisa selección de reservas con representación de biodiversidad y atributos espaciales, como forma y conectividad. Respalda la necesidad de coordinar cobertura y estructura espacial. Las tres parcelas y su formulación esquemática de flujo son elaboración didáctica.
+
+## Referencias generales y alcance de las citas
+
+- Roughgarden, T. *Algorithms Illuminated, Part 4: Algorithms for NP-Hard Problems*. Problemas fundacionales, reducciones y estrategias algorítmicas; antecedente de la primera guía y del esquema compartido.
+- Kleinberg, J., y Tardos, É. (2005). *Algorithm Design*. Pearson/Addison-Wesley. Modelado, NP-completitud y aproximación.
+- Garey, M. R., y Johnson, D. S. (1979). *Computers and Intractability: A Guide to the Theory of NP-Completeness*. W. H. Freeman. Fundamentos de NP-completitud y reducciones.
+- Wolsey, L. A. (1998). *Integer Programming*. Wiley. Fundamentos de formulación y resolución de programación entera.
+
+Las referencias específicas documentan antecedentes de modelos y aplicaciones. Las justificaciones de dificultad incluidas en los casos son argumentos didácticos mediante casos particulares; no son afirmaciones de que cada artículo citado demuestre la NP-dificultad de todas las extensiones aquí propuestas. Una demostración formal debe verificar que la transformación respete exactamente las restricciones de la variante analizada.

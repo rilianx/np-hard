@@ -17,9 +17,9 @@ Para cada problema se explican su descripción, entradas y salidas, un ejemplo, 
 - [Descargar el PDF](https://github.com/rilianx/np-hard/raw/refs/heads/main/docs/10_aplicaciones_reales_NP_Hard.pdf)
 - [Leer la versión editable en Markdown](docs/10_aplicaciones_reales_NP_Hard.md)
 
-Documento de **15 páginas** con diez casos detallados: reparto de medicamentos, turnos hospitalarios, cómputo, pruebas de software, servicios de emergencia, configuración de productos, horarios universitarios, producción, campañas en redes y conservación ambiental.
+Documento de **17 páginas** con diez casos detallados: reparto de medicamentos, turnos hospitalarios, cómputo, pruebas de software, servicios de emergencia, configuración de productos, horarios universitarios, producción, campañas en redes y conservación ambiental.
 
-Cada caso desarrolla datos, variables, restricciones, objetivo, un ejemplo numérico, la combinación de problemas fundacionales, una justificación de dificultad y consideraciones prácticas. Incluye una actividad y referencias.
+Cada caso desarrolla datos, variables, restricciones, objetivo, un ejemplo numérico, la combinación de problemas fundacionales, una justificación de dificultad y consideraciones prácticas. Incluye una actividad, **11 referencias específicas vinculadas a los casos** y cuatro referencias generales. La bibliografía indica qué respalda cada fuente y ofrece DOI y enlaces; los escenarios y ejemplos numéricos fueron elaborados para la guía.
 
 ## Propósito
 
