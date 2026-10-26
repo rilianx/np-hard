@@ -11,6 +11,16 @@ La guía tiene **28 páginas** e incluye los **19 problemas** conectados por las
 
 Para cada problema se explican su descripción, entradas y salidas, un ejemplo, aplicaciones actuales, cómo aprovechar un algoritmo y una pregunta para clase. También incluye una explicación de las reducciones, tres ejemplos de modelado, estrategias prácticas, una actividad integradora y referencias.
 
+## Diez aplicaciones reales: documento complementario
+
+- [Ver el PDF](docs/10_aplicaciones_reales_NP_Hard.pdf)
+- [Descargar el PDF](https://github.com/rilianx/np-hard/raw/refs/heads/main/docs/10_aplicaciones_reales_NP_Hard.pdf)
+- [Leer la versión editable en Markdown](docs/10_aplicaciones_reales_NP_Hard.md)
+
+Documento de **15 páginas** con diez casos detallados: reparto de medicamentos, turnos hospitalarios, cómputo, pruebas de software, servicios de emergencia, configuración de productos, horarios universitarios, producción, campañas en redes y conservación ambiental.
+
+Cada caso desarrolla datos, variables, restricciones, objetivo, un ejemplo numérico, la combinación de problemas fundacionales, una justificación de dificultad y consideraciones prácticas. Incluye una actividad y referencias.
+
 ## Propósito
 
 Ayudar a estudiantes a reconocer estructuras comunes entre problemas de horarios, selección de proyectos, cobertura, difusión, planificación de trabajos y rutas, y entender cómo aprovechar algoritmos para problemas fundacionales en aplicaciones nuevas.
