@@ -4,7 +4,7 @@
 
 Cada aplicación de esta guía describe una situación real, la dibuja, la resuelve a mano en un ejemplo pequeño y muestra qué problema NP-Hard clásico se esconde detrás. Al final de cada caso hay ideas para empezar a diseñar un **algoritmo greedy** y una **búsqueda local**.
 
-Los ejemplos numéricos son inventados para poder revisar las cuentas a mano. El modelo matemático formal de cada caso está al final, plegado, para quien quiera profundizar.
+Los ejemplos numéricos son inventados para poder revisar las cuentas a mano.
 
 ### Las cuatro reglas de oro del modelado
 
@@ -144,18 +144,8 @@ Cada movimiento solo se acepta si la nueva solución respeta la capacidad y redu
 
 Ventanas horarias de las clínicas, tráfico, medicamentos que necesitan cadena de frío y entregas urgentes que no pueden esperar. Cada una se puede agregar como restricción, pero hace el problema más difícil de resolver.
 
-<details>
-<summary>📐 Modelo matemático (opcional)</summary>
-
-- x_ijk = 1 si el furgón k viaja de i a j; y_ik = 1 si el furgón k atiende la clínica i.
-- Cada clínica es atendida una vez: Σ_k y_ik = 1.
-- Capacidad: Σ_i q_i · y_ik ≤ Q_k para cada furgón k.
-- Las rutas deben salir y volver al depósito, sin ciclos sueltos.
-- Minimizar Σ c_ij · x_ijk.
-
 **Referencia:** Toth, P., y Vigo, D. (eds.). (2014). *Vehicle Routing: Problems, Methods, and Applications*. 2.ª edición. SIAM. [DOI](https://doi.org/10.1137/1.9781611973594). Capítulos 1, 5 y 10: rutas con capacidad, ventanas de tiempo y visitas opcionales. El ejemplo y sus cifras son una adaptación didáctica.
 
-</details>
 
 ---
 
@@ -284,23 +274,12 @@ flowchart TB
 
 Competencias distintas (enfermería, técnicos, especialistas), preferencias de turno, equidad entre trabajadores a lo largo de varias semanas (quién hace más noches o fines de semana) y ausencias de último minuto.
 
-<details>
-<summary>📐 Modelo matemático (opcional)</summary>
-
-- x_er = 1 si el trabajador e cubre el turno r (solo si está disponible); z_e = 1 si el trabajador e es convocado.
-- Demanda: Σ_e x_er ≥ d_r para cada turno r.
-- Máximo de turnos: Σ_r x_er ≤ h_e · z_e.
-- Un turno por día y descanso: x_e,mañana(t+1) + x_e,noche(t) ≤ 1, y la suma de turnos de un mismo día ≤ 1.
-- Minimizar Σ_e z_e.
-
 **Referencias:**
 
 - Ernst, A. T., Jiang, H., Krishnamoorthy, M., y Sier, D. (2004). "Staff scheduling and rostering: A review of applications, methods and models". *European Journal of Operational Research*, 153(1), 3–27. [DOI](https://doi.org/10.1016/S0377-2217%2803%2900095-X). Revisión de planificación de personal, con aplicaciones en salud.
 - Pinedo, M. L. (2022). *Scheduling: Theory, Algorithms, and Systems*. 6.ª edición. Springer. [DOI](https://doi.org/10.1007/978-3-031-05921-6).
 
 El ejemplo de Ana, Bruno, Carla y Diego fue creado para esta guía.
-
-</details>
 
 ---
 
@@ -426,20 +405,11 @@ flowchart TB
 
 Trabajos que necesitan GPU y solo pueden ir a ciertos servidores, límites de memoria cuando varios trabajos corren a la vez, trabajos que dependen de otros y duraciones que en la práctica son solo estimaciones.
 
-<details>
-<summary>📐 Modelo matemático (opcional)</summary>
-
-- x_jm = 1 si el trabajo j se asigna al servidor m; C es el makespan.
-- Cada trabajo en un servidor: Σ_m x_jm = 1.
-- Carga de cada servidor: Σ_j p_j · x_jm ≤ C.
-- Minimizar C.
-
 **Referencias:**
 
 - Pinedo, M. L. (2022). *Scheduling: Theory, Algorithms, and Systems*. 6.ª edición. Springer. [DOI](https://doi.org/10.1007/978-3-031-05921-6). Modelos de máquinas paralelas y makespan.
 - Verma, A., Pedrosa, L., Korupolu, M. R., Oppenheimer, D., Tune, E., y Wilkes, J. (2015). "Large-scale cluster management at Google with Borg". *Proceedings of EuroSys*, artículo 18. [DOI](https://doi.org/10.1145/2741948.2741964). Sistema real de gestión de clústeres; no implica que use este modelo simplificado.
 
-</details>
 
 ---
 
@@ -549,18 +519,10 @@ flowchart TB
 
 Verificar una funcionalidad no garantiza que esté libre de errores. Además, hay pruebas inestables que fallan al azar, pruebas que dependen de otras y equipos que ejecutan varias pruebas en paralelo (lo que mezcla este problema con el de makespan del caso 3).
 
-<details>
-<summary>📐 Modelo matemático (opcional)</summary>
-
-- x_i = 1 si se ejecuta la prueba i; y_j = 1 si la funcionalidad j queda verificada.
-- Tiempo: Σ_i d_i · x_i ≤ B.
-- Una funcionalidad solo cuenta si alguna prueba elegida la verifica: y_j ≤ Σ_i a_ij · x_i, con a_ij = 1 si la prueba i verifica j.
-- Pruebas obligatorias: x_i = 1.
-- Maximizar Σ_j w_j · y_j.
 
 **Referencia:** Yoo, S., y Harman, M. (2012). "Regression testing minimization, selection and prioritization: a survey". *Software Testing, Verification and Reliability*, 22(2), 67–120. [DOI](https://doi.org/10.1002/stvr.430). Revisión de minimización, selección y priorización de pruebas. El presupuesto y el ejemplo son construcciones didácticas.
 
-</details>
+
 
 ---
 
@@ -665,17 +627,10 @@ flowchart TB
 
 Las bases tienen capacidad limitada (una base ocupada no responde a una segunda llamada), el tráfico cambia los tiempos de viaje y maximizar la población total puede dejar siempre sin cobertura a un barrio pequeño y aislado. Para esto último se puede exigir una cobertura mínima por sector.
 
-<details>
-<summary>📐 Modelo matemático (opcional)</summary>
-
-- x_i = 1 si se abre la base en la ubicación i; y_j = 1 si el barrio j queda cubierto.
-- Número de bases: Σ_i x_i ≤ p.
-- Cobertura: y_j ≤ Σ_i a_ij · x_i, con a_ij = 1 si la ubicación i alcanza el barrio j.
-- Maximizar Σ_j d_j · y_j.
 
 **Referencia:** Church, R., y ReVelle, C. (1974). "The maximal covering location problem". *Papers in Regional Science*, 32, 101–118. [DOI](https://doi.org/10.1111/j.1435-5597.1974.tb00902.x). Formulación clásica de localización de cobertura máxima; capacidad y equidad son extensiones.
 
-</details>
+
 
 ---
 
@@ -784,18 +739,10 @@ Cada movimiento debe verificar el presupuesto y las reglas antes de aceptarse.
 
 Descuentos por paquete, módulos que solo aportan valor cuando van juntos, versiones y licencias, y el consumo real de recursos (memoria, energía) que puede imponer otros límites además del presupuesto.
 
-<details>
-<summary>📐 Modelo matemático (opcional)</summary>
-
-- x_i = 1 si se elige el módulo i.
-- Dependencia "a requiere b": x_a ≤ x_b.
-- Incompatibilidad entre a y b: x_a + x_b ≤ 1.
-- Presupuesto: Σ_i c_i · x_i ≤ B.
-- Maximizar Σ_i v_i · x_i.
 
 **Referencia:** Sinz, C., Kaiser, A., y Küchlin, W. (2003). "Formal methods for the validation of automotive product configuration data". *AI EDAM*, 17(1), 75–97. [DOI](https://doi.org/10.1017/S0890060403171065). Validación de configuraciones automotrices con SAT; la optimización con presupuesto es una extensión didáctica.
 
-</details>
+
 
 ---
 
@@ -920,18 +867,9 @@ flowchart TB
 
 Cursos con varias sesiones por semana, disponibilidad de los profesores, salas de distinto tamaño (laboratorios, auditorios), preferencias por ciertos horarios y la decisión previa de qué cursos abrir.
 
-<details>
-<summary>📐 Modelo matemático (opcional)</summary>
-
-- x_ct = 1 si el curso c va en el bloque t; u_t = 1 si se usa el bloque t.
-- Cada curso en un bloque: Σ_t x_ct = 1.
-- Conflictos: x_ct + x_dt ≤ 1 para cada par en conflicto (c, d) y cada bloque t.
-- Salas: Σ_c x_ct ≤ s · u_t.
-- Minimizar Σ_t u_t.
 
 **Referencia:** Schaerf, A. (1999). "A survey of automated timetabling". *Artificial Intelligence Review*, 13, 87–127. [DOI](https://doi.org/10.1023/A:1006576209967). Revisión de horarios escolares, universitarios y de exámenes.
 
-</details>
 
 ---
 
@@ -1048,20 +986,13 @@ flowchart TB
 
 Fechas de entrega comprometidas (el orden más eficiente puede atrasar un pedido urgente), varias máquinas, mantenimientos programados, averías y materiales que no están disponibles desde el inicio.
 
-<details>
-<summary>📐 Modelo matemático (opcional)</summary>
-
-- x_ij = 1 si el pedido j se procesa inmediatamente después del pedido i.
-- Cada pedido tiene a lo más un sucesor y a lo más un antecesor, y la secuencia no puede tener ciclos sueltos.
-- S_j y C_j son el inicio y el fin del pedido j: C_j = S_j + p_j, y si x_ij = 1 entonces S_j ≥ C_i + s_ij.
-- Minimizar max_j C_j (equivalente a minimizar Σ s_ij · x_ij).
 
 **Referencias:**
 
 - Allahverdi, A., Ng, C. T., Cheng, T. C. E., y Kovalyov, M. Y. (2008). "A survey of scheduling problems with setup times or costs". *European Journal of Operational Research*, 187(3), 985–1032. [DOI](https://doi.org/10.1016/j.ejor.2006.06.060). Scheduling con tiempos de preparación.
 - Pinedo, M. L. (2022). *Scheduling: Theory, Algorithms, and Systems*. 6.ª edición. Springer. [DOI](https://doi.org/10.1007/978-3-031-05921-6).
 
-</details>
+
 
 ---
 
@@ -1159,8 +1090,6 @@ flowchart TB
 
 Las personas alcanzadas pueden **retransmitir** la información a otras (efecto cascada), lo que cambia completamente el problema y requiere modelos con probabilidades. Además, maximizar el total puede dejar sin información a grupos pequeños, por lo que puede exigirse un mínimo por comunidad.
 
-<details>
-<summary>📐 Modelo matemático (opcional)</summary>
 
 - x_i = 1 si se contacta al promotor i; y_j = 1 si la persona j es alcanzada.
 - Presupuesto: Σ_i c_i · x_i ≤ B.
@@ -1169,7 +1098,7 @@ Las personas alcanzadas pueden **retransmitir** la información a otras (efecto 
 
 **Referencia:** Kempe, D., Kleinberg, J., y Tardos, É. (2015). "Maximizing the Spread of Influence through a Social Network". *Theory of Computing*, 11(4), 105–147. [DOI](https://doi.org/10.4086/toc.2015.v011a004). [Acceso abierto](https://www.theoryofcomputing.org/articles/v011a004/). Modelos de difusión en cascada, su NP-dificultad y garantías del greedy.
 
-</details>
+
 
 ---
 
@@ -1282,18 +1211,9 @@ En la versión con conectividad, cada movimiento debe verificar que la zona siga
 
 Que una especie esté presente no garantiza que su población sea viable. Además, importan la calidad del hábitat, las barreras reales (caminos, ríos) que impiden la conectividad, los incendios y el cambio climático.
 
-<details>
-<summary>📐 Modelo matemático (opcional)</summary>
-
-- x_i = 1 si se protege la parcela i; y_s = 1 si la especie s queda protegida.
-- Presupuesto: Σ_i c_i · x_i ≤ B.
-- Protección: y_s ≤ Σ_i a_is · x_i, con a_is = 1 si la parcela i alberga la especie s.
-- Conectividad (opcional): restricciones de flujo desde una parcela raíz que solo atraviesan parcelas elegidas.
-- Maximizar Σ_s y_s.
 
 **Referencia:** Williams, J. C., ReVelle, C. S., y Levin, S. A. (2005). "Spatial attributes and reserve design models: A review". *Environmental Modeling & Assessment*, 10, 163–181. [DOI](https://doi.org/10.1007/s10666-005-9007-5). Selección de reservas con atributos espaciales como la conectividad.
 
-</details>
 
 ---
 
